@@ -26,4 +26,4 @@ const run = async () => {
   console.log('merged');
 }
 
-run();
+export default run;
