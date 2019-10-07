@@ -14,16 +14,11 @@ const run = async () => {
     repo: process.env.REPO,
   }).catch(e => console.error(e));
 
+  let pulls = [];
   for (let item of response) {
-    let num = String(item.number);
-    const response = await octokit.pulls.merge({
-      owner: process.env.OWNER,
-      repo: process.env.REPO,
-      pull_number: num,
-    }).catch(e => console.error(e));
+    pulls.push(item.number);
   }
-
-  console.log('merged');
+  return (pulls);
 }
 
-run();
+export default run;
